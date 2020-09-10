@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
+import task.DirectToPages;
+import task.RegisterInPages;
 import userinterfaces.HomePage;
 
 public class RegisterSteps {
@@ -22,12 +24,15 @@ public class RegisterSteps {
         actor.can(BrowseTheWeb.with(navegador));
         actor.wasAbleTo(Open.browserOn(homePage));
         navegador.manage().window().maximize();
-
     }
 
 
     @When("^he goes to the register page, fill in the fields$")
     public void heGoesToTheRegisterPageFillInTheFields() {
+        actor.wasAbleTo(
+                DirectToPages.actionPages(),
+                RegisterInPages.objectsRegister()
+        );
 
     }
 
